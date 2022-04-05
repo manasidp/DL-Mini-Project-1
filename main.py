@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 from models import *
 from utils import progress_bar
-
+from project1_model import project1_model
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--lr', default=0.01, type=float, help='learning rate')
