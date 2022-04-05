@@ -59,7 +59,8 @@ classes = ('plane', 'car', 'bird', 'cat', 'deer',
 # Model
 print('==> Building model..')
 
-net = ResNet18()
+#net = ResNet18()
+net = project1_model()
 net = net.to(device)
 if device == 'cuda':
     net = torch.nn.DataParallel(net)
@@ -68,8 +69,9 @@ if device == 'cuda':
 if args.resume:
     # Load checkpoint.
     print('==> Resuming from checkpoint..')
-    assert os.path.isdir('checkpoint'), 'Error: no checkpoint directory found!'
-    checkpoint = torch.load('./checkpoint/project1_model.pth')
+    #assert os.path.isdir('checkpoint'), 'Error: no checkpoint directory found!'
+    #checkpoint = torch.load('./checkpoint/project1_model.pth')
+    checkpoint = torch.load('./project1_model.pt')
     net.load_state_dict(checkpoint['net'])
     best_acc = checkpoint['acc']
     start_epoch = checkpoint['epoch']
@@ -140,9 +142,10 @@ def test(epoch):
             'acc': acc,
             'epoch': epoch,
         }
-        if not os.path.isdir('checkpoint'):
-            os.mkdir('checkpoint')
-        torch.save(state, './checkpoint/project1_model.pth')
+        #if not os.path.isdir('checkpoint'):
+            #os.mkdir('checkpoint')
+        #torch.save(state, './checkpoint/project1_model.pth')
+        torch.save(state, './project1_model.pt')
         best_acc = acc
 
 end_epoch = 200
