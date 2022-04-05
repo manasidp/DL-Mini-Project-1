@@ -104,7 +104,7 @@ class ResNet(nn.Module):
         return out
 
 
-def ResNet18():
+def project1_model():
     return ResNet(BasicBlock, [2, 2, 2, 2])
     
 
